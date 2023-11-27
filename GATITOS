@@ -1,0 +1,436 @@
+-- Tabla "cliente"
+CREATE TABLE cliente (
+  Id_cliente INTEGER,
+  num_sucursal INTEGER,
+  Nom_cliente VARCHAR(45),
+  tipo_cliente VARCHAR(45),
+  tel_cliente INTEGER,
+  mail_cliente VARCHAR(45),
+  direc_cliente VARCHAR(45),
+  ident_cliente VARCHAR(45),
+ apell_pater VARCHAR(45),
+ apell_mater VARCHAR(45),
+ cliente_est VARCHAR(45),
+ fecha_alta  DATE,
+ fecha_baj  DATE,
+ causa_baj VARCHAR(45)
+);
+
+-- Tabla "sucursal"
+CREATE TABLE sucursal (
+  num_sucursal INTEGER,
+  id_simcard INTEGER,
+  direc_sucursal VARCHAR(45)
+);
+
+-- Tabla "vendedor"
+CREATE TABLE vendedor (
+  Id_vendedor SERIAL,
+  dni INTEGER,
+  num_sucursal INTEGER,
+  nom_vendedor VARCHAR(45),
+  fono INTEGER,
+  correo VARCHAR(45),
+  apell_pater VARCHAR(45),
+  apell_mater VARCHAR(45),
+  direc VARCHAR(45)
+
+);
+
+-- Tabla "articulo"
+CREATE TABLE articulo (
+  fecha_cont    DATE,
+  tipo_art VARCHAR(20),
+  fecha_baja DATE,
+  nom_art   VARCHAR(45),,
+  id_articulo VARCHAR(45),
+  num_serie   INTEGER,
+ id_periodo INTEGER,
+  num_cel     INTEGER,
+
+  id_domicilio INTEGER
+
+);
+
+-- Tabla "domicilio"
+CREATE TABLE domicilio (
+  Id_domicilio SERIAL,
+  plan_aten VARCHAR(20),
+  tipo_domicilio VARCHAR(45),
+  num_cuenta INTEGER
+ Direc  VARCHAR(45),
+ Estado VARCHAR(45),
+ fecha_alt DATE ,
+ fecha_baj DATE,
+ causa_baj VARCHAR(45)
+tipo_contrato VARCHAR(45)
+);
+
+-- Tabla "factura"
+CREATE TABLE factura (
+  num_factura INTEGER,
+  fecha_factura DATE,
+  num_cuenta  INTEGER,
+  tot_pago INTEGER,
+  tot_imp INTEGER
+ 
+);
+-- Tabla "cuenta"
+CREATE TABLE cuenta (
+  num_cuenta INTEGER,
+  id_vendedor DATE,
+  id_cliente  INTEGER,
+  estado VARCHAR(20),
+direcc_fac  VARCHAR(45),
+fecha_alta  DATE,
+fecha_baj DATE,
+causa_baj VARCHAR(45),
+fac_elect  VARCHAR(20),
+id_ciclo INTEGER
+
+ 
+);
+
+Tabla “ciclo”
+CREATE TABLE ciclo (
+  Id_ciclo  INTEGER,
+  tipo_ciclo VARCHAR(20)
+);
+
+Tabla “periodo _de factura”
+CREATE TABLE periodo_fac (
+  Fecha_emi DATE,
+  Fecha_ven DATE
+);
+
+Tabla “Detalle_factura”
+CREATE TABLE detalle_factura (
+  mon_cobro INTEGER,
+día_cobrar DATE,
+  tipo_cargo VARCHAR(20),
+id_descuento INTGER
+);
+
+
+Tabla “Estructura_pais”
+CREATE TABLE estructura_pais (
+  nom_pais VARCHAR(45),
+ nom_ciudad VARCHAR(45),
+nom_provincia VARCHAR(45),
+id_ciclo INTEGER
+); 
+Tabla “Concepto_facturacion”
+CREATE TABLE con_facturacion (
+  Id_periodo INTEGER,     
+ Nom_pais VARCHAR(45),
+Tipo_servicio VARCHAR(20),
+id_descuento  INTEGER
+);
+Tabla “Acciones”
+CREATE TABLE acciones (
+ est_accion VARCHAR(45),     
+ tipo_ejecucion VARCHAR(45),
+num_id_fac INTEGER,
+fec_ingreso   DATE,
+fec_ejecucion  DATE,
+fec_term_ejecucion DATE,
+comentario  VARCHAR(45),
+Id_vendedor INTEGER
+);
+Tabla “Estructura_territorial”
+CREATE TABLE estructura_territorial (
+País VARCHAR(45),
+  impuesto INTEGER,
+  moneda VARCHAR(45),
+Id_cliente INTERGER
+);
+Tabla “Plan_de_atencion”
+CREATE TABLE plan_aten (
+  tipo_plan VARCHAR(45),
+ plan_anual VARCHAR(45),
+Id_periodo INTEGER,
+Tipo_servicio VARCHAR(20),
+plan_semestral  VARCHAR(45),
+plan_mensual
+);
+
+Tabla “descuentos”
+CREATE TABLE descuentos (
+ Id_descuentos INTEGER,
+ tipo_descuento VARCHAR(45),
+oferta VARCHAR(225),
+); 
+Tabla “servicio”
+CREATE TABLE servicio(
+ Fecha_inicio DATE,
+ tipo_servicio VARCHAR(45),
+fecha_termino DATE,
+);
+
+Tabla “simcard”
+CREATE TABLE simcard (
+ Id_simcard INTEGER,
+ estado VARCHAR(45),
+num_sucursal INTEGER
+); 
+
+Tabla “contrato”
+CREATE TABLE contrato (
+ tipo_contrato VARCHAR(45),
+ fecha_contrato DATE,
+fecha_termino DATE
+); 
+
+
+
+
+
+
+
+ 
+
+
+
+-- Definicion de las PK
+
+-- Tabla "cliente"
+ALTER TABLE cliente
+ADD PRIMARY KEY (id_cliente);
+
+-- Tabla "sucursal"
+ALTER TABLE sucursal
+ADD PRIMARY KEY (num_sucursal);
+
+-- Tabla "vendedor"
+ALTER TABLE vendedor
+ADD PRIMARY KEY (id_vendedor);
+
+-- Tabla "articulo"
+ALTER TABLE articulo
+ADD PRIMARY KEY (id_articulo);
+
+-- Tabla "domicilio"
+ALTER TABLE domicilio
+ADD PRIMARY KEY (id_domicilio);
+
+-- Tabla "factura"
+ALTER TABLE factura
+ADD PRIMARY KEY (num_factura);
+
+-- Tabla "cuenta"
+ALTER TABLE cuenta
+ADD PRIMARY KEY (num_cuenta);
+
+-- Tabla "ciclo"
+ALTER TABLE ciclo
+ADD PRIMARY KEY (Id_ciclo);
+
+-- Tabla "periodo"
+ALTER TABLE periodo
+ADD PRIMARY KEY (ciclo_facturacion);
+
+-- Tabla "detalle_factura"
+ALTER TABLE detalle factura
+ADD PRIMARY KEY (tipo_cargo);
+
+-- Tabla "Estructura_territorial"
+ALTER TABLE estructura_territorial
+ADD PRIMARY KEY (pais);
+
+-- Tabla "Estructura pais"
+ALTER TABLE estructura_pais
+ADD PRIMARY KEY (nom_pais);
+
+-- Tabla "con_facturacion"
+ALTER TABLE con_facturacion
+ADD PRIMARY KEY (id_periodo);
+
+-- Tabla "acciones"
+ALTER TABLE acciones
+ADD PRIMARY KEY (num_id_fac);
+
+
+-- Tabla "plan de atencion "
+ALTER TABLE plan_aten
+ADD PRIMARY KEY (tipo_plan);
+
+-- Tabla "descuento"
+ALTER TABLE descuento
+ADD PRIMARY KEY (id_descuento);
+
+-- Tabla "servicio"
+ALTER TABLE servicio
+ADD PRIMARY KEY (tipo_servicio);
+
+-- Tabla "simcard"
+ALTER TABLE simcard
+ADD PRIMARY KEY (id_simcard);
+
+-- Tabla "contrato"
+ALTER TABLE contrato
+ADD PRIMARY KEY (tipo_contrato);
+
+
+
+
+
+
+
+-- Definicion de las FK
+
+-- Definición de la clave foránea para la tabla "cuenta" que referencia a "vendedor"
+ALTER TABLE cuenta
+ADD FOREIGN KEY (Id_vendedor) REFERENCES vendedor (Id_vendedor);
+ADD FOREIGN KEY (Id_cliente) REFERENCES cliente (Id_cliente);
+ADD FOREIGN KEY (Id_ciclo) REFERENCES ciclo (Id_ciclo);
+
+
+
+
+-- Tabla "cliente"
+ALTER TABLE cliente
+ADD CONSTRAINT fk_cliente_estado
+
+
+
+-- Tabla "domicilio"
+ALTER TABLE domicilio
+FOREIGN KEY (tipo_contrato) REFERENCES contrato (tipo_contrato),
+FOREIGN KEY (Id_estado) REFERENCES estadoDomicilio (Id_estado),
+FOREIGN KEY (Id_ciclo) REFERENCES ciclo (Id_ciclo);
+FOREIGN KEY (num_cuenta) REFERENCES cuenta (num_cuenta);
+
+
+-- Tabla "sucursal"
+ALTER TABLE sucursal
+FOREIGN KEY (id_simcard) REFERENCES simcard (id_simcard);
+
+-- Tabla "simcard"
+ALTER TABLE simcard
+FOREIGN KEY (num_sucursal) REFERENCES sucursal (num_sucursal);
+
+-- Tabla "simcard"
+ALTER TABLE simcard
+FOREIGN KEY (num_sucursal) REFERENCES sucursal (num_sucursal);
+
+-- Tabla "vendedor"
+ALTER TABLE vendedor
+FOREIGN KEY (num_sucursal) REFERENCES sucursal (num_sucursal);
+
+-- Tabla "acciones "
+ALTER TABLE acciones
+FOREIGN KEY (id_vendedor) REFERENCES vendedor (id_vendedor);
+
+-- Tabla "estructura territorial "
+ALTER TABLE estructura territorial
+FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente);
+
+
+-- Tabla "factura "
+ALTER TABLE factura
+FOREIGN KEY (num_cuenta) REFERENCES cuenta (num_cuenta);
+
+
+-- Tabla "articulo "
+ALTER TABLE articulo
+FOREIGN KEY (id_periodo) REFERENCES concepto de facturacion (id_periodo);
+FOREIGN KEY (id_domicilio) REFERENCES domicilio (id_domicilio);
+
+-- Tabla "concepto de facturacion "
+ALTER TABLE concepto de facturación 
+FOREIGN KEY (id_descuento) REFERENCES descuentos (id_descuentos);
+FOREIGN KEY (nom_pais) REFERENCES estructura del pais (nom_pais);
+FOREIGN KEY (tipo_servicio) REFERENCES servicio (tipo_servicio);
+
+
+-- Tabla "plan de atencion"
+ALTER TABLE plan de atencion
+FOREIGN KEY (id_periodo) REFERENCES concepto de facturacion (id_periodo);
+FOREIGN KEY (tipo_servicio) REFERENCES servicio (tipo_servicio);
+-- Tabla "estructura del pais"
+ALTER TABLE estructura del pais
+FOREIGN KEY (id_ciclo) REFERENCES ciclo (id_ciclo);
+
+
+
+
+
+
+
+
+
+-- Subida de datos de las tablas
+
+-- Tabla simcard
+INSERT INTO simcard(estado)
+VALUES ('Activo'), ('Inactivo');
+
+-
+INSERT INTO detalle_factura (mon_cobro, día_cobrar, tipo_cargo, id_descuento)
+VALUES  ('25DLS', '05-30' , 'plan_aten', '0.1')
+
+INSERT INTO periodo (fecha_emi, fecha_ven, ciclo_facturacion)
+VALUES
+	('2020-02-10', '2024-01-01', '05-30'),
+  	('2020-04-10', '2024-02-15', '05-30'),
+  	('2020-03-11', '2024-03-10', '05-30');
+
+		
+INSERT INTO cliente (Id_cliente, nom_cliente, tipo_cliente, tel_cliente, mail_cliente, direc_cliente, ident_cliente, apell_pater, apell_mater, cliente_est, fecha_alta, fecha_baj, causa_baj)
+VALUES
+  	(1, 'Juaquin', 'Persona', 984567836, , 'joaco_984@gmail.com' , 'Robinson crusoe 937, Región Metropolitana', '16002959-3', 'Muñoz', 'leal',1,'2020-03-10', '2025-03-10', NULL),
+
+  	(2, 'Hernan', 'Persona', 964481247, 'hgarcia@gmail.com', Santa victoria 411, 16.356.132-5, 'Garcia', 'Landaeta', 0, '2022-06-10', '2023-06-10', 'Abandono del servicio' ),
+  	 
+
+INSERT INTO cuenta (num_cuenta, Id_vendedor, id_cliente, estado, direcc_fac, fecha_alta, fecha_baj, causa_baj, fac_elect, id_ciclo)
+VALUES
+  	(5323477, '17.355.102-0', '11.300.132-5', 1, 'Av. Diego Portales 1569, 8301674, Región Metropolitana', '2022-11-10', '2023-09-10', NULL, 'SI', '8855')
+(5322324, '18.555.100-0', '10.123.002-5', 1, 'Av. Diego Portales 1570, 8301674, Región Metropolitana', '2022-01-11', '2023-09-11', NULL, 'SI', '5417'),
+(5322367, '18.885.100-0', '17.666.002-7', 1, 'C. 135 1900, B1910AJF La Plata, Provincia de Buenos Aires, Argentina, '2020-02-11', '2025-09-11', NULL, 'SI', '8475'),
+
+INSERT INTO estructura _pais (nom_pais, nom_ciudad, nom_provincia, id_ciclo)
+VALUES
+  	('Chile', 'Santiago', 'Recoleta, '8855'),
+  	('Chile', 'Santiago', 'Santiago Centro', '5417'),
+  	('Argentina', 'Ciudad de los tilos', 'La plata', '8475'),
+
+INSERT INTO ciclo (id_ciclo, tipo_ciclo)
+VALUES
+  	('8855', 'Anual'),
+  	('5417', 'Anual'),
+  	('8475', 'Mensual'),
+
+  
+INSERT INTO servicio (fecha_inicio, tipo_servicio, fecha_termino)
+VALUES
+  	('2022-01-01', 'Servicio 1', '2023-01-01'),
+  	('2022-05-12', 'Servicio 2', '2023-05-12'),
+  	('2021-07-26', 'Servicio 3', '2022-07-26'),	
+
+INSERT INTO domicilio (id_domicilio, plan_aten, tipo_domicilio, num_cuenta, direcc, estado, fecha_alt, fecha_baj, causa_baj, tipo_contrato)
+VALUES
+  	('Calle Principal', 'anual', NULL, empresa, 109476536, 'Calle Principal', 0, '2020-07-26', '2027-07-26',NULL,1),
+  	('Avenida Central', 'mensual', 'empresa', 890756437, 'Avenida Central', 1, '2022-07-26', '2026-07-26', NULL,2),
+  	('Calle Secundaria', 'anual', 'empresa', '979636853', 'Calle Secundaria', 0, '2022-07-23', '2029-07-26', NULL,1);
+	
+INSERT INTO contrato (tipo_contrato, fecha_contrato, fecha_termino)
+VALUES
+  	('1', '2022-01-01', '2023-01-01'),
+  	('2', '2022-02-15', '2023-02-15'),
+  	('3', '2022-03-10', '2023-03-10');
+	
+INSERT INTO descuento (id_descuento, tipo_descuento, oferta)
+VALUES
+  	('144', 'black friday', 'Promocion');
+  	('114', 'invierno', 'Promocion');
+  	('118', 'verano', 'Promocion');
+
+INSERT INTO con_facturacion (id_periodo, num_factura, id_descuento)
+VALUES
+  	('155', '545217', '44245');
+  	('122', '545798', '47458');
+  ('117', '785798', '27258');
+	
+INSERT INTO plan_aten (tipo_plan, plan_anual, plan_semestral, plan_mensual)
+VALUES (ARRAY, 'anual', 'semestral', 'mensual')
